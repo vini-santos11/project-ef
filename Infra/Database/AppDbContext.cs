@@ -36,7 +36,7 @@ public abstract class AppDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            string connectionString = _configuration.GetConnectionString(Environment.GetEnvironmentVariable("CONNECTION_STRING"));
+            string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
             optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
         base.OnConfiguring(optionsBuilder);
