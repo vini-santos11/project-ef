@@ -1,7 +1,13 @@
+using Application.Configurations;
+using dotenv.net;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var envFilePath = "C:/Users/user/OneDrive/Documentos/Projetos/project-ef/Project-EF/.env";
+DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] { envFilePath }));
 
+// Add services to the container.
+builder.Services.AddDatabaseSetup(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
