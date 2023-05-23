@@ -1,11 +1,10 @@
 using Infra.Database;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.AspNetCore.Http;
 namespace Cross.Cutting.IoC;
 
 public static class DependencyInjection
 {
-
     public static void RegisterServicesAndRepositories(this IServiceCollection services)
     {
         services.AddScoped<AppDbContext>();

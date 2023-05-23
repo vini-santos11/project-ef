@@ -1,16 +1,15 @@
 using System.Reflection;
 using Domain.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Infra.Database;
 
-public abstract class AppDbContext : DbContext
+public class AppDbContext : DbContext
 {
-    private readonly IConfiguration _configuration;
-    protected AppDbContext(DbContextOptions options, IConfiguration configuration) : base(options)
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
-        _configuration = configuration;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
