@@ -11,6 +11,6 @@ public static class DatabaseSetup
         if (services == null) throw new ArgumentNullException(nameof(services));
 
         string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-        services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
     }
 }

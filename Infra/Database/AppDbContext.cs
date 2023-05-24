@@ -36,7 +36,7 @@ public class AppDbContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            optionsBuilder.UseNpgsql(connectionString);
         }
         base.OnConfiguring(optionsBuilder);
     }
